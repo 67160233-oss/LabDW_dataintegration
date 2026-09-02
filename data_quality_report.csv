@@ -1,0 +1,7 @@
+﻿step,entity,issue_description,affected_records_count,action_taken
+Deduplication,orders,Duplicate order_id found in raw combined orders,2,Kept last record per order_id
+Standardization & Deduplication,customers,Unstandardized province/email and duplicate customer_ids,3,"Trimmed/lowercased email, mapped province to standard Thai names, kept last record per customer_id"
+Referential Integrity Check,orders,customer_id not found in customers_crm master data,22,Excluded from fact_sales table
+Referential Integrity Check,orders,product_id not found in product_master data,2,Excluded from fact_sales table
+Business Rule Validation,orders,quantity <= 0,2,Excluded from fact_sales table
+Business Rule Validation,payments,"payment.status is not PAID (FAILED, REFUNDED, or Missing)",64,Excluded from fact_sales table
